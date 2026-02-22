@@ -45,6 +45,13 @@ class DataGenerator:
             else:
                 swap_effect = (mem_used_percent - 92) * 3.0 + 3.6
 
+            if mem_used_percent < 80:
+                swap_effect = 0
+            elif mem_used_percent < 92:
+                swap_effect = (mem_used_percent - 80) * 0.3
+            else:
+                swap_effect = (mem_used_percent - 92) * 3.0 + 3.6
+
             mem_swap_used_percent += swap_effect
 
             swap = mem_swap_used_percent
@@ -56,10 +63,6 @@ class DataGenerator:
             iowait = cpu_iowait_percent
             if iowait > 5:
                 cpu_load_avg_1m += (iowait - 5) * 0.15
-            cpu_usage_percent += daily_pattern * 15
-            cpu_load_avg_1m += daily_pattern * 0.8
-            mem_used_percent += daily_pattern * 3
-            disk_io_time_ms += daily_pattern * 3
             data = {
                 'tick': self.tick,
                 'timestamp': timestamp,
