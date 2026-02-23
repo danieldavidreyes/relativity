@@ -33,7 +33,7 @@ class DataGenerator:
 
     def generate_data(self):
         while True:
-            ground_truth = False
+            ground_truth = {"is_anomaly": False, "type": "none", "id": None}
             self.tick +=1
             cpu_usage_percent = np.random.normal(loc=25,scale=8)
             cpu_iowait_percent = np.random.normal(loc=2,scale=1.5)
