@@ -26,6 +26,7 @@ class featureEngine():
         })
         self.consumer.subscribe(['raw-metrics'])
         self.buffers = {}
+        data.pop('ground_truth', None)     
         self.kafka_producer = Producer({'bootstrap.servers': bootstrap_servers})
         self.tick = 0
         self.ewma = {} 
