@@ -1,0 +1,2 @@
+numpy
+confluent-kafka>=2.6.0
